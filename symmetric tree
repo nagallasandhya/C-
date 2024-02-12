@@ -1,0 +1,63 @@
+#include <iostream>
+
+
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+
+bool isMirror(TreeNode* leftSubtree, TreeNode* rightSubtree) {
+    if (leftSubtree == nullptr && rightSubtree == nullptr)
+        return true;
+    if (leftSubtree == nullptr || rightSubtree == nullptr)
+        return false;
+
+    
+  
+    return (leftSubtree->val == rightSubtree->val) &&
+           isMirror(leftSubtree->left, rightSubtree->right) &&
+           isMirror(leftSubtree->right, rightSubtree->left);
+}
+
+
+bool isSymmetric(TreeNode* root) {
+    if (root == nullptr)
+        return true;
+    return isMirror(root->left, root->right);
+}
+
+
+TreeNode* newNode(int val) {
+    TreeNode* node = new TreeNode(val);
+    return node;
+}
+
+int main() {
+  
+    TreeNode* root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(2);
+    root->left->left = newNode(3);
+    root->left->right = newNode(4);
+    root->right->left = newNode(4);
+    root->right->right = newNode(3);
+
+    if (isSymmetric(root))
+        std::cout << "The binary tree is symmetric." << std::endl;
+    else
+        std::cout << "The binary tree is not symmetric." << std::endl;
+
+    
+    delete root->right->right;
+    delete root->right->left;
+    delete root->left->right;
+    delete root->left->left;
+    delete root->right;
+    delete root->left;
+    delete root;
+
+    return 0;
+}
