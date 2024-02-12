@@ -1,0 +1,31 @@
+#include <iostream>
+
+// Function to calculate Greatest Common Divisor (GCD) using Euclidean algorithm
+int gcd(int a, int b) {
+    if (b == 0)
+        return a;
+    return gcd(b, a % b);
+}
+
+// Function to calculate Least Common Multiple (LCM) using GCD
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
+
+int main() {
+    int num1, num2;
+    
+    // Input two numbers
+    std::cout << "Enter first number: ";
+    std::cin >> num1;
+    std::cout << "Enter second number: ";
+    std::cin >> num2;
+    
+    // Calculate LCM
+    int result = lcm(num1, num2);
+    
+    // Output the result
+    std::cout << "LCM of " << num1 << " and " << num2 << " is: " << result << std::endl;
+    
+    return 0;
+}
