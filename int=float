@@ -1,0 +1,18 @@
+#include <iostream>
+
+int main() {
+
+    int integerVariable = 10;
+
+    // Declare a float variable
+    float floatVariable;
+
+    // Assign the integer variable to the float variable
+    floatVariable = integerVariable;
+
+    // Display the values
+    std::cout << "Integer Variable: " << integerVariable << std::endl;
+    std::cout << "Float Variable: " << floatVariable << std::endl;
+
+    return 0;
+}
